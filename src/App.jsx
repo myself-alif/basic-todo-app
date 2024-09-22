@@ -8,14 +8,16 @@ import WelcomeMessage from "./components/WelcomeMessage";
 function App() {
   const [todoitems, setTodoItems] = useState([]);
   const handleNewitem = (itemName, itemDate) => {
-    const newTodoItems = [
-      ...todoitems,
-      {
-        name: itemName,
-        date: itemDate,
-      },
-    ];
-    setTodoItems(newTodoItems);
+    setTodoItems((currentValue) => {
+      const newTodoItems = [
+        ...currentValue,
+        {
+          name: itemName,
+          date: itemDate,
+        },
+      ];
+      return newTodoItems;
+    });
   };
   const handleDeleteItem = (toDoItemName) => {
     const newTodoItem = todoitems.filter(
